@@ -19,8 +19,8 @@ const styles = {
         padding: '16px',
         textAlign: 'center',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-        width: '200px',
-        height: '250px',
+        width: '180px',
+        height: '230px',
         margin: '10px',
         backgroundColor : '#1E1E1E',
     },
@@ -36,7 +36,7 @@ const styles = {
         marginTop: '8px',
     },
     title: {
-        fontSize: '1em',
+        fontSize: '0.9em',
         margin: '8px 0',
         
     },

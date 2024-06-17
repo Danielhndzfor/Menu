@@ -1,12 +1,23 @@
-.logoBox {
+.main {
     display: flex;
+    align-items: center;
     justify-content: center;
-    margin-top: 20px;
+    position: relative;
+}
+
+.back {
+    position: absolute;
+    left: 20px;
+    cursor: pointer;
+}
+
+.LogoBox {
+    text-align: center;
 }
 
 .Logo {
-    width: 200px;
-    height: 200px;
+    max-width: 80%;
+    height: auto;
 }
 
 .cardContainer {
