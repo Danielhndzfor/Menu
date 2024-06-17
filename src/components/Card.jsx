@@ -19,7 +19,7 @@ const styles = {
         padding: '10px',
         textAlign: 'center',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-        width: '180px',
+        width: '160px',
         height: '230px',
         margin: '5px',
         backgroundColor : '#1E1E1E',
