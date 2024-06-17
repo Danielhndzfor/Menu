@@ -16,12 +16,12 @@ const styles = {
     card: {
         border: '1px solid #ddd',
         borderRadius: '8px',
-        padding: '16px',
+        padding: '10px',
         textAlign: 'center',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
         width: '180px',
         height: '230px',
-        margin: '10px',
+        margin: '5px',
         backgroundColor : '#1E1E1E',
     },
     image: {
