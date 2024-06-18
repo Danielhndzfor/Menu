@@ -26,3 +26,8 @@
     justify-content: center;
     margin-top: 20px;
 }
+
+.link {
+    text-decoration: none;
+    color: black;
+}

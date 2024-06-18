@@ -20,7 +20,7 @@ const styles = {
         textAlign: 'center',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
         width: '160px',
-        height: '230px',
+        height: '210px',
         margin: '5px',
         backgroundColor : '#1E1E1E',
     },
@@ -31,14 +31,14 @@ const styles = {
     },
     boxTitle: {
         backgroundColor: '#F5D817',
-        borderRadius: '16px',
+        borderRadius: '10px',
         padding: '1px',
         marginTop: '8px',
     },
     title: {
         fontSize: '0.9em',
         margin: '8px 0',
-        
+        color: '#1E1E1E',
     },
 };
 

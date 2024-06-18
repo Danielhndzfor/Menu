@@ -1,91 +1,103 @@
 // Menu.jsx
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Card from '../components/Card';
-import Logo from '../assets/logo.png';
+import Encabezado from '../components/Encabezado';
 import '../css/Menu.css';
 
 function Menu() {
     return (
         <>
-            <div className="main">
-                <a href='/' className="back">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-left" width="55" height="55" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                        <path d="M5 12l14 0" />
-                        <path d="M5 12l6 6" />
-                        <path d="M5 12l6 -6" />
-                    </svg>
-                </a>
-                <div className='LogoBox'>
-                    <img className='Logo' src={Logo} alt="Logo Oficial" />
-                </div>
-            </div>
+            <Encabezado />
 
             <div className='cardContainer'>
-                <Card
-                    image="https://via.placeholder.com/150"
-                    title="ESPECIALIDADES"
-                >
-                </Card>
+                <Link className='link'>
+                    <Card
+                        image="https://via.placeholder.com/150"
+                        title="ESPECIALIDADES"
+                    >
+                    </Card>
+                </Link>
 
-                <Card
-                    image="https://via.placeholder.com/150"
-                    title="TACOS"
-                >
-                </Card>
+                <Link to="/tacos" className='link'>
+                    <Card
+                        image="https://via.placeholder.com/150"
+                        title="TACOS"
+                    >
+                    </Card>
+                </Link>
 
-                <Card
-                    image="https://via.placeholder.com/150"
-                    title="VOLCAN Y GRINGA"
-                >
-                </Card>
+                <Link className='link'>
+                    <Card
+                        image="https://via.placeholder.com/150"
+                        title="VOLCAN Y GRINGA"
+                    >
+                    </Card>
+                </Link>
 
-                <Card
-                    image="https://via.placeholder.com/150"
-                    title="PELLIZCADA"
-                >
-                </Card>
+                <Link className='link'>
+                    <Card
+                        image="https://via.placeholder.com/150"
+                        title="PELLIZCADA"
+                    >
+                    </Card>
+                </Link>
 
-                <Card
-                    image="https://via.placeholder.com/150"
-                    title="PAPAS"
-                >
-                </Card>
+                <Link className='link'>
+                    <Card
+                        image="https://via.placeholder.com/150"
+                        title="PAPAS"
+                    >
+                    </Card>
+                </Link>
 
-                <Card
-                    image="https://via.placeholder.com/150"
-                    title="KILOS"
-                >
-                </Card>
+                <Link className='link'>
+                    <Card
+                        image="https://via.placeholder.com/150"
+                        title="KILOS"
+                    >
+                    </Card>
+                </Link>
 
-                <Card
-                    image="https://via.placeholder.com/150"
-                    title="QUESOS"
-                >
-                </Card>
+                <Link className='link'>
+                    <Card
+                        image="https://via.placeholder.com/150"
+                        title="QUESOS"
+                    >
+                    </Card>
+                </Link>
 
-                <Card
-                    image="https://via.placeholder.com/150"
-                    title="ORDENES"
-                >
-                </Card>
+                <Link className='link'>
+                    <Card
+                        image="https://via.placeholder.com/150"
+                        title="ORDENES"
+                    >
+                    </Card>
+                </Link>
 
-                <Card
-                    image="https://via.placeholder.com/150"
-                    title="PARRILLADAS"
-                >
-                </Card>
+                <Link className='link'>
+                    <Card
+                        image="https://via.placeholder.com/150"
+                        title="PARRILLADAS"
+                    >
+                    </Card>
+                </Link>
 
-                <Card
-                    image="https://via.placeholder.com/150"
-                    title="BEBIDAS"
-                >
-                </Card>
-                <Card
-                    image="https://via.placeholder.com/150"
-                    title="EXTRAS"
-                >
-                </Card>
+                <Link className='link'>
+                    <Card
+                        image="https://via.placeholder.com/150"
+                        title="BEBIDAS"
+                    >
+                    </Card>
+                </Link>
+
+                <Link className='link'>
+                    <Card
+                        image="https://via.placeholder.com/150"
+                        title="EXTRAS"
+                    >
+                    </Card>
+                </Link>
 
             </div>
         </>
