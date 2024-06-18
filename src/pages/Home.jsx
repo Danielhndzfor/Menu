@@ -14,7 +14,7 @@ function Home() {
                 Colimas Tacos & Papas
             </h2>
 
-            <div className="container">
+            <div className="container1">
                 {/* Menu */}
                 <Link to="/menu" className="opcBox">
                     <div className="boxTitle">
