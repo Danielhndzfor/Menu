@@ -1,0 +1,61 @@
+.container {
+    background-color: #1e1e1e;
+    padding: 60px;
+    width: 80%;
+    margin: 40px auto;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.titu {
+    background-color: #F5D817;
+    padding: 5px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.titu h1 {
+    margin: 0;
+    font-weight: 900;
+
+}
+
+.ing {
+    margin-bottom: 20px;
+    color: white;
+    font-weight: 900;
+}
+
+.sabores {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    font-weight: 900;
+}
+
+.sabores p {
+    margin-top: 10px;
+    color: white;
+}
+
+.precio {
+    margin-right: 40px;
+    margin-top: 40px;
+    font-weight: 900;
+}
+
+.precioL {
+    margin-left: 70px;
+    margin-top: 40px;
+    font-weight: 900;
+    color: white;
+}
+
+.precio p {
+    color: white;
+    
+}

@@ -11,7 +11,7 @@ function Menu() {
             <Encabezado />
 
             <div className='cardContainer'>
-                <Link className='link'>
+                <Link to="/especialidades" className='link'>
                     <Card
                         image="https://via.placeholder.com/150"
                         title="ESPECIALIDADES"

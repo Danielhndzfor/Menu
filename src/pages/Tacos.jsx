@@ -9,7 +9,7 @@ function Tacos() {
 
             <div className="container">
                 <div className='title'>
-                    <h1>Tacos</h1>
+                    <h1>TACOS</h1>
                 </div>
 
                 <div className="sabores">
