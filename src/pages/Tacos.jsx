@@ -7,7 +7,7 @@ function Tacos() {
         <>
             <Encabezado />
 
-            <div className="container">
+            <div className="containerT">
                 <div className='title'>
                     <h1>TACOS</h1>
                 </div>
