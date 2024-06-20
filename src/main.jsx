@@ -6,6 +6,10 @@ import Home from './pages/Home.jsx'
 import Menu from './pages/Menu.jsx'
 import Tacos from './pages/Tacos.jsx'
 import Especialidades from './pages/Especialidades.jsx'
+import VolcanGringa from './pages/VolcanGringa.jsx'
+import Pellizcada from './pages/Pellizcada.jsx'
+import Papas from './pages/Papas.jsx'
+import Kilos from './pages/Kilos.jsx'
 
 // Especialidades
 import Colima from './pages/Colima.jsx'
@@ -26,10 +30,16 @@ function Index() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<App />}>
-                    <Route path="/" element={<Home />} />
+                    <Route path="/" element={<Home />} />ç
+
                     <Route path="menu" element={<Menu />} />
                     <Route path="tacos" element={<Tacos />} />
                     <Route path="especialidades" element={<Especialidades />} />
+                    <Route path="volcangringa" element={<VolcanGringa />} />
+                    <Route path="pellizcada" element={<Pellizcada />} />
+                    <Route path="papas" element={<Papas />} />
+                    <Route path="kilos" element={<Kilos />} />
+
                     <Route path="colima" element={<Colima />} />
                     <Route path="honolulu" element={<Honolulu />} />
                     <Route path="sinnombre" element={<SinNombre />} />

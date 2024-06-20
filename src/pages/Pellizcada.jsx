@@ -1,4 +1,3 @@
-// Tacos.jsx
 import Encabezado from '../components/Encabezado';
 import '../css/Tacos.css';
 
@@ -7,30 +6,30 @@ function Pellizcada() {
         <>
             <Encabezado />
 
-            <div className="container">
+            <div className="containerT">
                 <div className='title'>
-                    <h1>Pellizcada</h1>
+                    <h1>PELLIZCADA</h1>
                 </div>
 
                 <div className="sabores">
-                    <div className="tac">
-                        <p className="sabor">Pastor</p>
-                        <p className="precio">$18</p>
+                    <div className="tacos">
+                        <p className="saborT">Pastor</p>
+                        <p className="precioT">$75</p>
                     </div>
 
-                    <div className="tac">
-                        <p className="sabor">Bistec</p>
-                        <p className="precio">$18</p>
+                    <div className="tacos">
+                        <p className="saborT">Bistec</p>
+                        <p className="precioT">$75</p>
                     </div>
 
-                    <div className="tac">
-                        <p className="sabor">Chorizo</p>
-                        <p className="precio">$18</p>
+                    <div className="tacos">
+                        <p className="saborT">Chorizo</p>
+                        <p className="precioT">$75</p>
                     </div>
 
-                    <div className="tac">
-                        <p className="sabor">Arrachera</p>
-                        <p className="precio">$22</p>
+                    <div className="tacos">
+                        <p className="saborT">Arrachera</p>
+                        <p className="precioT">$75</p>
                     </div>
                 </div>
             </div>

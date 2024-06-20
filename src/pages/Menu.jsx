@@ -27,7 +27,7 @@ function Menu() {
                     </Card>
                 </Link>
 
-                <Link className='link'>
+                <Link to="/volcangringa" className='link'>
                     <Card
                         image="https://via.placeholder.com/150"
                         title="VOLCAN Y GRINGA"
@@ -35,7 +35,7 @@ function Menu() {
                     </Card>
                 </Link>
 
-                <Link className='link'>
+                <Link to="/pellizcada" className='link'>
                     <Card
                         image="https://via.placeholder.com/150"
                         title="PELLIZCADA"
@@ -43,7 +43,7 @@ function Menu() {
                     </Card>
                 </Link>
 
-                <Link className='link'>
+                <Link to="/papas" className='link'>
                     <Card
                         image="https://via.placeholder.com/150"
                         title="PAPAS"
@@ -51,7 +51,7 @@ function Menu() {
                     </Card>
                 </Link>
 
-                <Link className='link'>
+                <Link to="/kilos" className='link'>
                     <Card
                         image="https://via.placeholder.com/150"
                         title="KILOS"
@@ -59,7 +59,7 @@ function Menu() {
                     </Card>
                 </Link>
 
-                <Link className='link'>
+                <Link to="/quesos" className='link'>
                     <Card
                         image="https://via.placeholder.com/150"
                         title="QUESOS"
@@ -67,7 +67,7 @@ function Menu() {
                     </Card>
                 </Link>
 
-                <Link className='link'>
+                <Link to="/ordenes" className='link'>
                     <Card
                         image="https://via.placeholder.com/150"
                         title="ORDENES"
@@ -75,7 +75,7 @@ function Menu() {
                     </Card>
                 </Link>
 
-                <Link className='link'>
+                <Link to="/parrilladas" className='link'>
                     <Card
                         image="https://via.placeholder.com/150"
                         title="PARRILLADAS"
@@ -83,7 +83,7 @@ function Menu() {
                     </Card>
                 </Link>
 
-                <Link className='link'>
+                <Link to="/bebidas" className='link'>
                     <Card
                         image="https://via.placeholder.com/150"
                         title="BEBIDAS"
@@ -91,7 +91,7 @@ function Menu() {
                     </Card>
                 </Link>
 
-                <Link className='link'>
+                <Link to="/extras" className='link'>
                     <Card
                         image="https://via.placeholder.com/150"
                         title="EXTRAS"

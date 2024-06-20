@@ -6,9 +6,11 @@ import '../css/Home.css';
 function Home() {
     return (
         <>
-            <div className='LogoBox'>
-                <img className='Logo' src={Logo} alt="Logo Oficial" />
-            </div>
+            <a href="/">
+                <div className='LogoBox'>
+                    <img className='Logo' src={Logo} alt="Logo Oficial" />
+                </div>
+            </a>
 
             <h2 className='Titulo'>
                 Colimas Tacos & Papas
