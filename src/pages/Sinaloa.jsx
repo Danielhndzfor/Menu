@@ -1,8 +1,7 @@
-// Tacos.jsx
-import Encabezado from '../../components/Encabezado';
-import '../../css/Especialidad.css';
+import Encabezado from '../components/Encabezado';
+import '../css/Especialidad.css';
 
-function SinNombre() {
+function Sinaloa() {
     return (
         <>
             <Encabezado />
@@ -10,21 +9,22 @@ function SinNombre() {
             <div className="container">
                 <div className='card'>
                     <div className='titu'>
-                        <h1>SIN NOMBRE</h1>
+                        <h1>SINALOA</h1>
                     </div>
                     <div className='ing'>
                         <p>Ingredientes:</p>
                     </div>
                     <div className='sabores'>
+                        <p>Arrachera</p>
                         <p>Pastor</p>
-                        <p>Bistec</p>
                         <p>Cebolla</p>
                         <p>Tocino</p>
                         <p>Queso</p>
+                        <p>Tortilla Frita</p>
                     </div>
-                    <div className='precioL'>
-                        <p>Media $110</p>
-                        <p>Orden $150</p>
+                    <div className='precio'>
+                        <p>Media $130</p>
+                        <p>Orden $170</p>
                     </div>
                 </div>
             </div>
@@ -32,4 +32,4 @@ function SinNombre() {
     );
 }
 
-export default SinNombre;
+export default Sinaloa;

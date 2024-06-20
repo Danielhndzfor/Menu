@@ -1,8 +1,7 @@
-// Tacos.jsx
-import Encabezado from '../../components/Encabezado';
-import '../../css/Especialidad.css';
+import Encabezado from '../components/Encabezado';
+import '../css/Especialidad.css';
 
-function Sinaloa() {
+function Honolulu() {
     return (
         <>
             <Encabezado />
@@ -10,22 +9,21 @@ function Sinaloa() {
             <div className="container">
                 <div className='card'>
                     <div className='titu'>
-                        <h1>SINALOA</h1>
+                        <h1>HONOLULU</h1>
                     </div>
                     <div className='ing'>
                         <p>Ingredientes:</p>
                     </div>
                     <div className='sabores'>
-                        <p>Arrachera</p>
                         <p>Pastor</p>
-                        <p>Cebolla</p>
+                        <p>Jamón</p>
+                        <p>Piña</p>
                         <p>Tocino</p>
                         <p>Queso</p>
-                        <p>Tortilla Frita</p>
                     </div>
                     <div className='precio'>
-                        <p>Media $130</p>
-                        <p>Orden $170</p>
+                        <p>Media $110</p>
+                        <p>Orden $150</p>
                     </div>
                 </div>
             </div>
@@ -33,4 +31,4 @@ function Sinaloa() {
     );
 }
 
-export default Sinaloa;
+export default Honolulu;

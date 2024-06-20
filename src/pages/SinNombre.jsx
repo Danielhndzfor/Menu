@@ -1,8 +1,7 @@
-// Tacos.jsx
-import Encabezado from '../../components/Encabezado';
-import '../../css/Especialidad.css';
+import Encabezado from '../components/Encabezado';
+import '../css/Especialidad.css';
 
-function Honolulu() {
+function SinNombre() {
     return (
         <>
             <Encabezado />
@@ -10,19 +9,19 @@ function Honolulu() {
             <div className="container">
                 <div className='card'>
                     <div className='titu'>
-                        <h1>HONOLULU</h1>
+                        <h1>SIN NOMBRE</h1>
                     </div>
                     <div className='ing'>
                         <p>Ingredientes:</p>
                     </div>
                     <div className='sabores'>
                         <p>Pastor</p>
-                        <p>Jamón</p>
-                        <p>Piña</p>
+                        <p>Bistec</p>
+                        <p>Cebolla</p>
                         <p>Tocino</p>
                         <p>Queso</p>
                     </div>
-                    <div className='precio'>
+                    <div className='precioL'>
                         <p>Media $110</p>
                         <p>Orden $150</p>
                     </div>
@@ -32,4 +31,4 @@ function Honolulu() {
     );
 }
 
-export default Honolulu;
+export default SinNombre;

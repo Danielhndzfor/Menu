@@ -1,8 +1,7 @@
-// Tacos.jsx
-import Encabezado from '../../components/Encabezado';
-import '../../css/Especialidad.css';
+import Encabezado from '../components/Encabezado';
+import '../css/Especialidad.css';
 
-function QueMeNotas() {
+function Taquiqueso() {
     return (
         <>
             <Encabezado />
@@ -10,20 +9,20 @@ function QueMeNotas() {
             <div className="container">
                 <div className='card'>
                     <div className='titu'>
-                        <h1>QUE ME NOTAS</h1>
+                        <h1>TAQUIQUESO</h1>
                     </div>
                     <div className='ing'>
                         <p>Ingredientes:</p>
                     </div>
                     <div className='sabores'>
-                        <p>Pastor</p>
-                        <p>Champiñon</p>
-                        <p>Tocino</p>
-                        <p>Queso</p>
+                        <p>
+                            Carne a elección dentro de una tortilla con queso
+                        </p>
+                        
                     </div>
                     <div className='precioL'>
                         <p>Media $110</p>
-                        <p>Orden $150</p>
+                        <p>Orden $155</p>
                     </div>
                 </div>
             </div>
@@ -31,4 +30,4 @@ function QueMeNotas() {
     );
 }
 
-export default QueMeNotas;
+export default Taquiqueso;

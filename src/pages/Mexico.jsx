@@ -1,8 +1,7 @@
-// Tacos.jsx
-import Encabezado from '../../components/Encabezado';
-import '../../css/Especialidad.css';
+import Encabezado from '../components/Encabezado';
+import '../css/Especialidad.css';
 
-function Atuncito() {
+function Mexico() {
     return (
         <>
             <Encabezado />
@@ -10,17 +9,16 @@ function Atuncito() {
             <div className="container">
                 <div className='card'>
                     <div className='titu'>
-                        <h1>ATUNCITO</h1>
+                        <h1>MEXICO</h1>
                     </div>
                     <div className='ing'>
                         <p>Ingredientes:</p>
                     </div>
                     <div className='sabores'>
-                        <p>Atún</p>
-                        <p>Piña</p>
-                        <p>Morrón</p>
+                        <p>Pastor</p>
+                        <p>Bistec</p>
+                        <p>Jalapeño</p>
                         <p>Cebolla</p>
-                        <p>Jitomate</p>
                         <p>Queso</p>
                     </div>
                     <div className='precio'>
@@ -33,4 +31,4 @@ function Atuncito() {
     );
 }
 
-export default Atuncito;
+export default Mexico;

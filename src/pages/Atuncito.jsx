@@ -1,8 +1,7 @@
-// Tacos.jsx
-import Encabezado from '../../components/Encabezado';
-import '../../css/Especialidad.css';
+import Encabezado from '../components/Encabezado';
+import '../css/Especialidad.css';
 
-function YaTeVi() {
+function Atuncito() {
     return (
         <>
             <Encabezado />
@@ -10,20 +9,22 @@ function YaTeVi() {
             <div className="container">
                 <div className='card'>
                     <div className='titu'>
-                        <h1>YA TE VI</h1>
+                        <h1>ATUNCITO</h1>
                     </div>
                     <div className='ing'>
                         <p>Ingredientes:</p>
                     </div>
                     <div className='sabores'>
-                        <p>Bistec</p>
-                        <p>Champiñon</p>
-                        <p>Tocino</p>
+                        <p>Atún</p>
+                        <p>Piña</p>
+                        <p>Morrón</p>
+                        <p>Cebolla</p>
+                        <p>Jitomate</p>
                         <p>Queso</p>
                     </div>
                     <div className='precio'>
                         <p>Media $110</p>
-                        <p>Orden $155</p>
+                        <p>Orden $150</p>
                     </div>
                 </div>
             </div>
@@ -31,4 +32,4 @@ function YaTeVi() {
     );
 }
 
-export default YaTeVi;
+export default Atuncito;
