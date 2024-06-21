@@ -4,13 +4,36 @@ import Logo from '../assets/logo.png';
 import '../css/Home.css';
 
 function Home() {
+    const handleAddContact = () => {
+        const contactInfo = {
+            name: 'Colimas Tacos & Papas',
+            phone: '3123099268',
+            address: 'Prolongacion Hidalgo #926 A, Colima, Mexico'
+        };
+
+        const vCard = `BEGIN:VCARD
+                        VERSION:3.0
+                        FN:${contactInfo.name}
+                        TEL;TYPE=CELL:${contactInfo.phone}
+                        ADR:${contactInfo.address}
+                        END:VCARD`;
+
+        const blob = new Blob([vCard], { type: 'text/vcard' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'contacto.vcf';
+        a.click();
+        URL.revokeObjectURL(url);
+    };
+
     return (
         <>
-            <a href="/">
-                <div className='LogoBox'>
+            <div className='LogoBox'>
+                <a href="/">
                     <img className='Logo' src={Logo} alt="Logo Oficial" />
-                </div>
-            </a>
+                </a>
+            </div>
 
             <h2 className='Titulo'>
                 Colimas Tacos & Papas
@@ -68,7 +91,7 @@ function Home() {
                 </Link>
 
                 {/* Contacto */}
-                <a href="/contact.vcf" download className="opcBox">
+                <div className="opcBox" onClick={handleAddContact}>
                     <div className="boxTitle">
                         <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-address-book" width="30" height="30" viewBox="0 0 24 24" strokeWidth="1.5" stroke="black" fill="none" strokeLinecap="round" strokeLinejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -81,10 +104,11 @@ function Home() {
                         </svg>
                         <h3>Agregar Contacto</h3>
                     </div>
-                </a>
-            </div >
+                </div>
+            </div>
         </>
     );
 }
 
 export default Home;
+
