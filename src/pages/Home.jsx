@@ -4,29 +4,6 @@ import Logo from '../assets/logo.png';
 import '../css/Home.css';
 
 function Home() {
-    const handleAddContact = () => {
-        const contactInfo = {
-            name: 'Colimas Tacos & Papas',
-            phone: '3123099268',
-            address: 'Prolongacion Hidalgo #926 A, Colima, Mexico'
-        };
-
-        const vCard = `BEGIN:VCARD
-                        VERSION:3.0
-                        FN:${contactInfo.name}
-                        TEL;TYPE=CELL:${contactInfo.phone}
-                        ADR:${contactInfo.address}
-                        END:VCARD`;
-
-        const blob = new Blob([vCard], { type: 'text/vcard' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'contacto.vcf';
-        a.click();
-        URL.revokeObjectURL(url);
-    };
-
     return (
         <>
             <div className='LogoBox'>
@@ -91,7 +68,7 @@ function Home() {
                 </Link>
 
                 {/* Contacto */}
-                <div className="opcBox" onClick={handleAddContact}>
+                <Link to="./contact.vcf" className="opcBox">
                     <div className="boxTitle">
                         <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-address-book" width="30" height="30" viewBox="0 0 24 24" strokeWidth="1.5" stroke="black" fill="none" strokeLinecap="round" strokeLinejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
@@ -104,11 +81,10 @@ function Home() {
                         </svg>
                         <h3>Agregar Contacto</h3>
                     </div>
-                </div>
-            </div>
+                </Link>
+            </div >
         </>
     );
 }
 
 export default Home;
-
