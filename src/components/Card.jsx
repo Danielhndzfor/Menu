@@ -15,12 +15,12 @@ function Card({ image, title, children }) {
 const styles = {
     card: {
         border: '1px solid #ddd',
-        borderRadius: '16px',
-        padding: '10px',
+        borderRadius: '8px',
+        padding: '8px',
         textAlign: 'center',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-        width: '180px',
-        height: '85px',
+        width: '160px',
+        height: '70px',
         margin: '5px',
         backgroundColor : '#1E1E1E',
     },
@@ -32,7 +32,7 @@ const styles = {
     boxTitle: {
         backgroundColor: '#F5D817',
         borderRadius: '10px',
-        padding: '5px',
+        padding: '2px',
         marginTop: '8px',
     },
     title: {
