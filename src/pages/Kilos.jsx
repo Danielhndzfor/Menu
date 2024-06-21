@@ -1,61 +1,55 @@
 import Encabezado from '../components/Encabezado';
 import '../css/Kilos.css';
 
-function Papas() {
+function Kilos() {
     return (
         <>
             <Encabezado />
 
-            <div className="containerK">
-                <div className='title'>
+            <div class="containerK">
+                <div class="title">
                     <h1>KILOS</h1>
                 </div>
-                <div className="opcK">
-                    <p>Medio</p>
-                    <p>Kilo</p>
-                </div>
-
-                <div className="asados">
-                    <div className="kilos">
-                        <p className="saborK">Natural</p>
-                        <p className="precioM">$80</p>
-                        <p className="precioK">$80</p>
+                <div class="asados">
+                    <div class="opcK">
+                        <div class="saborK"></div>
+                        <div class="precioM">Medio</div>
+                        <div class="precioK">Kilo</div>
                     </div>
-
-                    <div className="kilos">
-                        <p className="saborK">Pastor</p>
-                        <p className="precioM">$90</p>
-                        <p className="precioK">$80</p>
+                    <div class="kilos">
+                        <div class="saborK">Natural</div>
+                        <div class="precioM">$80</div>
+                        <div class="precioK">$80</div>
                     </div>
-
-                    <div className="kilos">
-                        <p className="saborK">Bistec</p>
-                        <p className="precioM">$90</p>
-                        <p className="precioK">$80</p>
+                    <div class="kilos">
+                        <div class="saborK">Pastor</div>
+                        <div class="precioM">$90</div>
+                        <div class="precioK">$80</div>
                     </div>
-
-                    <div className="kilos">
-                        <p className="saborK">Chorizo</p>
-                        <p className="precioM">$90</p>
-                        <p className="precioK">$80</p>
+                    <div class="kilos">
+                        <div class="saborK">Bistec</div>
+                        <div class="precioM">$90</div>
+                        <div class="precioK">$80</div>
                     </div>
-
-                    <div className="kilos">
-                        <p className="saborK">Arrachera</p>
-                        <p className="precioM">$100</p>
-                        <p className="precioK">$80</p>
+                    <div class="kilos">
+                        <div class="saborK">Chorizo</div>
+                        <div class="precioM">$90</div>
+                        <div class="precioK">$80</div>
                     </div>
-
-                    <div className="kilos">
-                        <p className="saborK">Mixto</p>
-                        <p className="precioM">$100</p>
-                        <p className="precioK">$80</p>
+                    <div class="kilos">
+                        <div class="saborK">Arrachera</div>
+                        <div class="precioM">$100</div>
+                        <div class="precioK">$80</div>
                     </div>
-
-                    <div className="kilos">
-                        <p className="saborK">Especial</p>
-                        <p className="precioM">$100</p>
-                        <p className="precioK">$80</p>
+                    <div class="kilos">
+                        <div class="saborK">Mixto</div>
+                        <div class="precioM">$100</div>
+                        <div class="precioK">$80</div>
+                    </div>
+                    <div class="kilos">
+                        <div class="saborK">Especial</div>
+                        <div class="precioM">$100</div>
+                        <div class="precioK">$80</div>
                     </div>
                 </div>
             </div>
@@ -63,4 +57,4 @@ function Papas() {
     );
 }
 
-export default Papas;
+export default Kilos;

@@ -10,6 +10,7 @@ import VolcanGringa from './pages/VolcanGringa.jsx'
 import Pellizcada from './pages/Pellizcada.jsx'
 import Papas from './pages/Papas.jsx'
 import Kilos from './pages/Kilos.jsx'
+import Quesos from './pages/Quesos.jsx'
 
 // Especialidades
 import Colima from './pages/Colima.jsx'
@@ -39,6 +40,7 @@ function Index() {
                     <Route path="pellizcada" element={<Pellizcada />} />
                     <Route path="papas" element={<Papas />} />
                     <Route path="kilos" element={<Kilos />} />
+                    <Route path="quesos" element={<Quesos />} />
 
                     <Route path="colima" element={<Colima />} />
                     <Route path="honolulu" element={<Honolulu />} />
