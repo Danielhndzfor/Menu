@@ -20,6 +20,7 @@
 
 .title h1 {
     margin: 0;
+    color: black;
 }
 
 .asados {
@@ -30,12 +31,12 @@
 
 .opcK, .kilos {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Centra los elementos en el contenedor */
     padding: 10px 20px;
     font-weight: bold;
     border-bottom: 1px solid white;
     margin-bottom: 10px;
-    width: 100%; /* Asegura que las filas ocupen todo el ancho del contenedor */
+    width: 115%; /* Ajusta el ancho del contenedor */
     box-sizing: border-box; /* Asegura que el padding esté incluido en el ancho total */
 }
 

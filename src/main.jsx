@@ -11,6 +11,10 @@ import Pellizcada from './pages/Pellizcada.jsx'
 import Papas from './pages/Papas.jsx'
 import Kilos from './pages/Kilos.jsx'
 import Quesos from './pages/Quesos.jsx'
+import Ordenes from './pages/Ordenes.jsx'
+import Parrilladas from './pages/Parrilladas.jsx'
+import Bebidas from './pages/Bebidas.jsx'
+import Extras from './pages/Extras.jsx'
 
 // Especialidades
 import Colima from './pages/Colima.jsx'
@@ -24,6 +28,10 @@ import Mexico from './pages/Mexico.jsx'
 import YaTeVi from './pages/YaTeVi.jsx'
 import Taquiqueso from './pages/Taquiqueso.jsx'
 import Sinaloa from './pages/Sinaloa.jsx'
+
+// Parrilladas
+import Chica from './pages/Chica.jsx'
+import Grande from './pages/Grande.jsx'
 
 
 function Index() {
@@ -41,6 +49,10 @@ function Index() {
                     <Route path="papas" element={<Papas />} />
                     <Route path="kilos" element={<Kilos />} />
                     <Route path="quesos" element={<Quesos />} />
+                    <Route path="ordenes" element={<Ordenes />} />
+                    <Route path="parrilladas" element={<Parrilladas />} />
+                    <Route path="bebidas" element={<Bebidas />} />
+                    <Route path="extras" element={<Extras />} />
 
                     <Route path="colima" element={<Colima />} />
                     <Route path="honolulu" element={<Honolulu />} />
@@ -53,6 +65,9 @@ function Index() {
                     <Route path="yatevi" element={<YaTeVi />} />
                     <Route path="taquiqueso" element={<Taquiqueso />} />
                     <Route path="sinaloa" element={<Sinaloa />} />
+
+                    <Route path="chica" element={<Chica />} />
+                    <Route path="grande" element={<Grande />} />
                 </Route>
             </Routes>
         </BrowserRouter>

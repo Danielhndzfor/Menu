@@ -4,7 +4,7 @@ import React from 'react';
 function Card({ image, title, children }) {
     return (
         <div style={styles.card}>
-            {image && <img src={image} alt={title} style={styles.image} />}
+            {/* {image && <img src={image} alt={title} style={styles.image} />} */}
             <div style={styles.boxTitle}>
                 <h3 style={styles.title}>{title}</h3>
             </div>
@@ -15,12 +15,12 @@ function Card({ image, title, children }) {
 const styles = {
     card: {
         border: '1px solid #ddd',
-        borderRadius: '8px',
+        borderRadius: '16px',
         padding: '10px',
         textAlign: 'center',
         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-        width: '160px',
-        height: '210px',
+        width: '180px',
+        height: '85px',
         margin: '5px',
         backgroundColor : '#1E1E1E',
     },
@@ -32,7 +32,7 @@ const styles = {
     boxTitle: {
         backgroundColor: '#F5D817',
         borderRadius: '10px',
-        padding: '1px',
+        padding: '5px',
         marginTop: '8px',
     },
     title: {
