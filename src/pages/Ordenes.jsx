@@ -13,8 +13,8 @@ function Ordenes() {
                 <div class="asados">
                     <div class="opcK">
                         <div class="saborK"></div>
-                        <div class="precioM">Medio</div>
-                        <div class="precioK">Kilo</div>
+                        <div class="precioM">Media</div>
+                        <div class="precioK">Orden</div>
                     </div>
                     <div class="kilos">
                         <div class="saborK">Pastor</div>
