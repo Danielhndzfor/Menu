@@ -51,7 +51,7 @@ const CheckoutSteps = ({
 
   if (currentStep === 1) {
     return (
-      <div className="p-4 sm:p-6 flex flex-col h-[70vh] sm:h-[65vh]"> {/* Ajusta la altura según tu diseño */}
+      <div className="p-4 sm:p-6 flex flex-col h-[65vh] sm:h-[65vh]"> {/* Cambia aquí la altura si lo necesitas */}
         <h4 className="text-base sm:text-lg font-semibold text-amber-400 mb-4">Revisa tu pedido</h4>
         {cart.length === 0 ? (
           <p className="text-gray-400 text-center py-8 text-sm sm:text-base flex-1">Tu carrito está vacío</p>
