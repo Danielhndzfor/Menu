@@ -10,7 +10,7 @@ type Datos = {
   tipo: string;
 };
 
-const NUMERO_WHATSAPP = "523148728911"; // Número actualizado de la taquería
+const NUMERO_WHATSAPP = "523123099268"; // Número actualizado de la taquería
 
 export function sendWhatsappOrder(cart: CartItem[], datos: Datos) {
   const productos = cart

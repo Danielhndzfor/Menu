@@ -13,14 +13,14 @@ type Props = {
   onBack: () => void;
 };
 
-const CheckoutSteps = ({ 
-  currentStep, 
-  cart, 
-  total, 
-  updateCart, 
+const CheckoutSteps = ({
+  currentStep,
+  cart,
+  total,
+  updateCart,
   updateCartObservations,
-  onStepComplete, 
-  onBack 
+  onStepComplete,
+  onBack
 }: Props) => {
   const [customerData, setCustomerData] = useState({
     nombre: "",
@@ -39,8 +39,8 @@ const CheckoutSteps = ({
     if (customerData.tipo === "recoger") {
       return customerData.nombre && customerData.telefono;
     } else {
-      return customerData.nombre && customerData.telefono && 
-             customerData.calle && customerData.numero && customerData.colonia;
+      return customerData.nombre && customerData.telefono &&
+        customerData.calle && customerData.numero && customerData.colonia;
     }
   };
 
@@ -223,7 +223,7 @@ const CheckoutSteps = ({
               </div>
             </div>
           </div>
-          
+
           <div className="bg-gray-800/50 rounded-lg p-3 sm:p-4 border border-gray-700/50">
             <h5 className="font-semibold text-amber-400 mb-2 text-sm sm:text-base">Datos del cliente:</h5>
             <div className="text-xs sm:text-sm text-gray-300 space-y-1">
