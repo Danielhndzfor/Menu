@@ -43,10 +43,6 @@ const OrderDrawer = ({
     }
   };
 
-  function onStepComplete(arg0: number): void {
-    throw new Error("Function not implemented.");
-  }
-
   return (
     <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
       <div className="w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl bg-gradient-to-b from-gray-900 to-black rounded-2xl shadow-2xl border border-amber-500/20 relative max-h-[85vh] sm:max-h-[90vh] overflow-hidden">
@@ -98,32 +94,16 @@ const OrderDrawer = ({
         </div>
 
         {/* Content */}
-        <div className="flex flex-col h-full">
-          <div className="flex-1 overflow-y-auto">
-            <CheckoutSteps
-              currentStep={currentStep}
-              cart={cart}
-              total={total}
-              updateCart={updateCart}
-              updateCartObservations={updateCartObservations}
-              onStepComplete={handleStepComplete}
-              onBack={handleBack}
-            />
-          </div>
-          {/* Total y botón */}
-          <div className="border-t border-gray-700 pt-4 bg-gray-900">
-            <div className="flex justify-between text-lg sm:text-xl font-bold text-amber-400 mb-4">
-              <span>Total:</span>
-              <span>${total}</span>
-            </div>
-            <button
-              onClick={() => onStepComplete(1)}
-              disabled={cart.length === 0}
-              className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-black py-2 sm:py-3 rounded-lg font-bold disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 text-sm sm:text-base"
-            >
-              Continuar
-            </button>
-          </div>
+        <div className="flex-1 overflow-y-auto">
+          <CheckoutSteps
+            currentStep={currentStep}
+            cart={cart}
+            total={total}
+            updateCart={updateCart}
+            updateCartObservations={updateCartObservations}
+            onStepComplete={handleStepComplete}
+            onBack={handleBack}
+          />
         </div>
       </div>
     </div>
