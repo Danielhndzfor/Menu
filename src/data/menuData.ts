@@ -1,3 +1,9 @@
+export type ExtraOption = {
+  key: string;
+  name: string;
+  price: number;
+};
+
 export type Product = {
   id: number;
   name: string;
@@ -6,6 +12,9 @@ export type Product = {
   price2?: number;
   // Add type to distinguish different two-column scenarios
   priceType?: 'media-orden' | 'natural-carne' | 'medio-kilo' | 'chica-grande';
+  extras?: ExtraOption[];
+  selectType?: string;
+  promo?: boolean; // Permite la propiedad opcional 'promo'
 };
 
 export type CartItem = Product & { 
@@ -26,21 +35,32 @@ export const MENU: MenuSection[] = [
     title: "TACOS",
     icon: "🌮",
     products: [
-      { id: 1, name: "Pastor", price: 20 },
-      { id: 2, name: "Bistec", price: 20 },
-      { id: 3, name: "Chorizo", price: 20 },
-      { id: 4, name: "Arrachera", price: 25 },
+      { id: 1, name: "Taco de Pastor", price: 20 },
+      { id: 2, name: "Taco de Bistec", price: 20 },
+      { id: 3, name: "Taco de Chorizo", price: 20 },
+      { id: 4, name: "Taco de Arrachera", price: 25 },
     ],
   },
   {
     key: "volcanes",
-    title: "VOLCÁN Y GRINGAS",
+    title: "VOLCANES",
     icon: "🌋",
     products: [
-      { id: 5, name: "Pastor", price: 100 },
-      { id: 6, name: "Bistec", price: 100 },
-      { id: 7, name: "Chorizo", price: 100 },
-      { id: 8, name: "Arrachera", price: 110 },
+      { id: 5, name: "Volcan de Pastor", price: 100 },
+      { id: 6, name: "Volcan de Bistec", price: 100 },
+      { id: 7, name: "Volcan de Chorizo", price: 100 },
+      { id: 8, name: "Volcan de Arrachera", price: 110 },
+    ],
+  },
+  {
+    key: "gringas",
+    title: "GRINGAS",
+    icon: "🧀",
+    products: [
+      { id: 75, name: "Gringa de Pastor", price: 100 },
+      { id: 76, name: "Gringa de Bistec", price: 100 },
+      { id: 77, name: "Gringa de Chorizo", price: 100 },
+      { id: 78, name: "Gringa de Arrachera", price: 110 },
     ],
   },
   {
@@ -48,24 +68,92 @@ export const MENU: MenuSection[] = [
     title: "PELLIZCADA",
     icon: "🫓",
     products: [
-      { id: 9, name: "Pastor", price: 85 },
-      { id: 10, name: "Bistec", price: 85 },
-      { id: 11, name: "Chorizo", price: 85 },
-      { id: 12, name: "Arrachera", price: 85 },
+      { id: 9, name: "Pellizcada de Pastor", price: 85 },
+      { id: 10, name: "Pellizcada de Bistec", price: 85 },
+      { id: 11, name: "Pellizcada de Chorizo", price: 85 },
+      { id: 12, name: "Pellizcada de Arrachera", price: 85 },
     ],
   },
-  {
+    {
     key: "papas",
     title: "PAPAS",
-    icon: "🍟",
+    icon: "🥔",
     products: [
-      { id: 13, name: "Natural", price: 90, desc: "*Preparadas en una base de papas con queso, crema, elote, champiñones y mantequilla." },
-      { id: 14, name: "Pastor", price: 100 },
-      { id: 15, name: "Bistec", price: 100 },
-      { id: 16, name: "Chorizo", price: 100 },
-      { id: 17, name: "Arrachera", price: 110 },
-      { id: 18, name: "Mixto", price: 110 },
-      { id: 19, name: "Especial", price: 110 },
+      {
+        id: 13,
+        name: "Papa Natural",
+        price: 90,
+        desc: "*Preparadas en una base de papas con queso, crema, elote, champiñones y mantequilla.",
+        extras: [
+          { key: "queso", name: "Extra Queso", price: 15 },
+          { key: "carne", name: "Extra Carne", price: 30 },
+          { key: "tocino", name: "Extra Tocino", price: 20 },
+        ],
+      },
+      {
+        id: 14,
+        name: "Papa Pastor",
+        price: 100,
+        extras: [
+          { key: "queso", name: "Extra Queso", price: 15 },
+          { key: "carne", name: "Extra Carne", price: 30 },
+          { key: "tocino", name: "Extra Tocino", price: 20 },
+        ],
+      },
+      {
+        id: 15,
+        name: "Papa Bistec",
+        price: 100,
+        extras: [
+          { key: "queso", name: "Extra Queso", price: 15 },
+          { key: "carne", name: "Extra Carne", price: 30 },
+          { key: "tocino", name: "Extra Tocino", price: 20 },
+        ],
+      },
+      {
+        id: 16,
+        name: "Papa Chorizo",
+        price: 100,
+        extras: [
+          { key: "queso", name: "Extra Queso", price: 15 },
+          { key: "carne", name: "Extra Carne", price: 30 },
+          { key: "tocino", name: "Extra Tocino", price: 20 },
+        ],
+      },
+      {
+        id: 17,
+        name: "Papa Arrachera",
+        price: 110,
+        extras: [
+          { key: "queso", name: "Extra Queso", price: 15 },
+          { key: "carne", name: "Extra Carne", price: 30 },
+          { key: "tocino", name: "Extra Tocino", price: 20 },
+        ],
+      },
+      {
+        id: 18,
+        name: "Papa Mixto",
+        price: 110,
+        desc: "*Elige dos tipos de carne.",
+        selectType: "mixto", // <--- NUEVO
+        extras: [
+          { key: "queso", name: "Extra Queso", price: 15 },
+          { key: "carne", name: "Extra Carne", price: 30 },
+          { key: "tocino", name: "Extra Tocino", price: 20 },
+        ],
+      },
+      {
+        id: 19,
+        name: "Papa Especial",
+        desc: "*Elige la especialidad que más te guste.",
+        price: 110,
+        selectType: "especial", // <--- NUEVO
+        extras: [
+          { key: "queso", name: "Extra Queso", price: 15 },
+          { key: "carne", name: "Extra Carne", price: 30 },
+          { key: "tocino", name: "Extra Tocino", price: 20 },
+        ],
+      },
     ],
   },
   {
@@ -145,10 +233,17 @@ export const MENU: MenuSection[] = [
   {
     key: "extras",
     title: "EXTRAS",
-    icon: "🌶️",
+    icon: "➕",
     products: [
-      { id: 52, name: "Carne", price: 30 },
       { id: 53, name: "Cebolla Frita", price: 30 },
+    ],
+  },
+  {
+    key: "promociones",
+    title: "PROMOCIONES",
+    icon: "🎉",
+    products: [
+      { id: 54, name: "Miercoles de Tacos", price: 20, desc: "Tacos al pastor al 2x1" },
     ],
   },
 ];

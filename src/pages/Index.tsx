@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { MENU } from "../data/menuData";
 import { useCart } from "../hooks/useCart";
@@ -7,6 +6,7 @@ import SidebarMenu from "../components/SidebarMenu";
 import ProductGrid from "../components/ProductGrid";
 import OrderDrawer from "../components/OrderDrawer";
 import Footer from "../components/Footer";
+import WelcomeBanner from "../components/WelcomeBanner";
 
 const Index = () => {
   const { cart, addToCart, updateCart, updateCartObservations, emptyCart } = useCart();
@@ -42,6 +42,7 @@ const Index = () => {
           )}
 
           <main className="flex-1 lg:ml-80 p-8">
+            <WelcomeBanner />
             {currentSection && (
               <ProductGrid
                 section={currentSection}

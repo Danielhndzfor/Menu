@@ -13,13 +13,13 @@ type Props = {
   emptyCart: () => void;
 };
 
-const OrderDrawer = ({ 
-  open, 
-  onClose, 
-  cart, 
-  updateCart, 
+const OrderDrawer = ({
+  open,
+  onClose,
+  cart,
+  updateCart,
   updateCartObservations,
-  emptyCart 
+  emptyCart
 }: Props) => {
   const [currentStep, setCurrentStep] = useState(1);
 
@@ -62,21 +62,18 @@ const OrderDrawer = ({
           {/* Círculos y líneas */}
           <div className="flex items-center justify-center">
             {[1, 2, 3].map((step, idx) => (
-              <React.Fragment key={step}>
+              <div key={step} className="flex items-center">
                 <div className="flex flex-col items-center">
                   <div
-                    className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-xs sm:text-sm font-medium transition-all duration-300 ${
-                      currentStep >= step
+                    className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-xs sm:text-sm font-medium transition-all duration-300 ${currentStep >= step
                         ? "bg-gradient-to-r from-amber-500 to-orange-500 text-black shadow-lg shadow-amber-500/25"
                         : "bg-gray-800 text-gray-400 border border-gray-600"
-                    }`}
+                      }`}
                   >
                     {step}
                   </div>
-                  {/* Etiqueta debajo del círculo */}
-                  <span className={`mt-2 text-xs sm:text-sm font-medium text-center w-12 sm:w-16 ${
-                    currentStep >= step ? "text-amber-400" : "text-gray-500"
-                  }`}>
+                  <span className={`mt-2 text-xs sm:text-sm font-medium text-center w-12 sm:w-16 ${currentStep >= step ? "text-amber-400" : "text-gray-500"
+                    }`}>
                     {step === 1 && "Revisar"}
                     {step === 2 && "Datos"}
                     {step === 3 && "Confirmar"}
@@ -88,7 +85,7 @@ const OrderDrawer = ({
                     <div className={`w-full h-1 rounded ${currentStep > step ? "bg-gradient-to-r from-amber-500 to-orange-500" : "bg-gray-700"}`}></div>
                   </div>
                 )}
-              </React.Fragment>
+              </div>
             ))}
           </div>
         </div>

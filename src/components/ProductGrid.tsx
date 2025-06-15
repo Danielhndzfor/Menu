@@ -1,5 +1,5 @@
-
-import { MenuSection, Product, CartItem } from "../data/menuData";
+import React, { useState } from "react";
+import { MenuSection, Product, CartItem, ExtraOption } from "../data/menuData";
 
 type Props = {
   section: MenuSection;
@@ -9,6 +9,92 @@ type Props = {
 };
 
 const ProductGrid = ({ section, cart, onAddToCart, onUpdateCart }: Props) => {
+  const [showExtrasModal, setShowExtrasModal] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [selectedExtras, setSelectedExtras] = useState<string[]>([]);
+  const [sinExtra, setSinExtra] = useState(false);
+  const [cantidad, setCantidad] = useState(1);
+  const [promoQty, setPromoQty] = useState<{ [id: number]: number }>({});
+
+  // Define las opciones de carne y especialidades
+  const carnes = ["Pastor", "Bistec", "Chorizo", "Arrachera"];
+  const especialidades = [
+    "Colima", "Honolulu", "Sin Nombre", "Que Me Notas", "Alambre De Pollo",
+    "Alambre XL", "Atuncito", "México", "Ya Te Vi", "Taquiqueso", "Sinaloa", "Vegetariana"
+  ];
+
+  // Estados para selección especial
+  const [mixtoCarnes, setMixtoCarnes] = useState<string[]>([]);
+  const [especialidad, setEspecialidad] = useState<string>("");
+
+  const openExtrasModal = (product: Product) => {
+    setSelectedProduct(product);
+    setSelectedExtras([]);
+    setSinExtra(false);
+    setCantidad(1);
+    setShowExtrasModal(true);
+  };
+
+  const closeExtrasModal = () => {
+    setShowExtrasModal(false);
+    setSelectedProduct(null);
+    setSelectedExtras([]);
+    setSinExtra(false);
+    setCantidad(1);
+    setMixtoCarnes([]);
+    setEspecialidad("");
+  };
+
+  const handleExtraChange = (key: string) => {
+    setSelectedExtras(prev =>
+      prev.includes(key)
+        ? prev.filter(e => e !== key)
+        : [...prev, key]
+    );
+  };
+
+  const handleSinExtra = () => {
+    setSinExtra(!sinExtra);
+    if (!sinExtra) setSelectedExtras([]);
+  };
+
+  const handleCantidad = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCantidad(Math.max(1, Number(e.target.value)));
+  };
+
+  const addToCartWithExtras = () => {
+    if (!selectedProduct) return;
+    const extrasElegidos = sinExtra
+      ? []
+      : selectedProduct.extras?.filter(e => selectedExtras.includes(e.key)) || [];
+    const extrasText = sinExtra
+      ? "Sin extra"
+      : extrasElegidos.length > 0
+        ? extrasElegidos.map(e => e.name).join(", ")
+        : "";
+
+    let selectionText = "";
+    if (selectedProduct.selectType === "mixto") {
+      selectionText = mixtoCarnes.length === 2 ? `(${mixtoCarnes.join(", ")})` : "";
+    }
+    if (selectedProduct.selectType === "especial") {
+      selectionText = especialidad ? `(${especialidad})` : "";
+    }
+
+    const productName = `${selectedProduct.name}${selectionText}${extrasText ? ` (${extrasText})` : ""}`;
+    for (let i = 0; i < cantidad; i++) {
+      onAddToCart({
+        ...selectedProduct,
+        promo: section.key === "promociones",
+        name: selectedProduct.name, // <-- solo el nombre limpio
+        extras: extrasElegidos,
+      });
+    }
+    closeExtrasModal();
+    setMixtoCarnes([]);
+    setEspecialidad("");
+  };
+
   const getPriceLabels = (priceType?: string) => {
     switch (priceType) {
       case 'media-orden':
@@ -24,14 +110,15 @@ const ProductGrid = ({ section, cart, onAddToCart, onUpdateCart }: Props) => {
     }
   };
 
-  const createVariantProduct = (product: Product, price: number, variantName: string): Product => {
+  const createVariantProduct = (product: Product, price: number, variantName: string): Product & { variantLabel: string } => {
     return {
       ...product,
       id: product.id * 1000 + (price === product.price ? 1 : 2),
-      name: `${product.name} (${variantName})`,
+      name: product.name,
       price: price,
       price2: undefined,
-      priceType: undefined
+      priceType: undefined,
+      variantLabel: variantName // <--- aquí
     };
   };
 
@@ -39,28 +126,36 @@ const ProductGrid = ({ section, cart, onAddToCart, onUpdateCart }: Props) => {
     return cart.find(item => item.id === productId);
   };
 
-  const renderProductButton = (product: Product, variant?: { price: number; label: string; colorClass: string }) => {
-    const targetProduct = variant ? createVariantProduct(product, variant.price, variant.label) : product;
-    const cartItem = getCartItem(targetProduct.id);
-    const price = variant ? variant.price : product.price;
-    const label = variant ? variant.label : 'AGREGAR';
-    const colorClass = variant ? variant.colorClass : 'from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400';
+  const renderProductButton = (product: Product & { variantLabel?: string }, colorClassOverride?: string) => {
+    const cartItem = getCartItem(product.id);
+    const isPromo = section.key === "promociones";
+    const colorClass = colorClassOverride || "from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400";
+    const qty = cartItem ? cartItem.qty : 0;
 
-    if (cartItem) {
-      // Mostrar contador si el producto ya está en el carrito
+    // Si es promoción y NO es miércoles, solo muestra el mensaje
+    if (isPromo && !isWednesday) {
       return (
-        <div className={`flex-1 bg-gradient-to-r ${colorClass} text-black px-3 py-2 md:px-4 md:py-3 rounded-lg font-bold transition-all duration-300 flex items-center justify-between text-sm md:text-base ${!variant ? 'max-w-xs' : ''}`}>
-          <span>{label}</span>
+        <div className="text-xs text-red-400 mt-2 font-bold">
+          Solo disponible los miércoles
+        </div>
+      );
+    }
+
+    // Botón igual para todos (incluyendo promociones)
+    if (cartItem) {
+      return (
+        <div className={`flex-1 bg-gradient-to-r ${colorClass} text-black px-3 py-2 md:px-4 md:py-3 rounded-lg font-bold transition-all duration-300 flex items-center justify-between text-sm md:text-base`}>
+          <span>AGREGAR</span>
           <div className="flex items-center gap-2 md:gap-3">
             <button
-              onClick={() => onUpdateCart(targetProduct.id, cartItem.qty - 1)}
+              onClick={() => onUpdateCart(product.id, cartItem.qty - 1)}
               className="w-6 h-6 md:w-7 md:h-7 bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors duration-300 flex items-center justify-center text-sm"
             >
               -
             </button>
             <span className="w-6 md:w-8 text-center font-bold">{cartItem.qty}</span>
             <button
-              onClick={() => onUpdateCart(targetProduct.id, cartItem.qty + 1)}
+              onClick={() => onUpdateCart(product.id, cartItem.qty + 1)}
               className="w-6 h-6 md:w-7 md:h-7 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors duration-300 flex items-center justify-center text-sm"
             >
               +
@@ -70,19 +165,45 @@ const ProductGrid = ({ section, cart, onAddToCart, onUpdateCart }: Props) => {
       );
     }
 
-    // Mostrar botón normal si el producto no está en el carrito
     return (
       <button
-        onClick={() => onAddToCart(targetProduct)}
-        className={`flex-1 bg-gradient-to-r ${colorClass} text-black px-3 py-2 md:px-4 md:py-3 rounded-lg font-bold transition-all duration-300 hover:scale-105 flex items-center justify-between text-sm md:text-base ${!variant ? 'max-w-xs' : ''}`}
+        onClick={() =>
+          onAddToCart({
+            ...product,
+            promo: isPromo,
+            name: product.name,
+          })
+        }
+        className={`flex-1 bg-gradient-to-r ${colorClass} text-black px-3 py-2 md:px-4 md:py-3 rounded-lg font-bold transition-all duration-300 hover:scale-105 flex items-center justify-between text-sm md:text-base`}
       >
-        <span>{label}</span>
+        <span>
+          {product.variantLabel ? product.variantLabel : "AGREGAR"}
+        </span>
         <div className="flex items-center gap-1 md:gap-2">
-          <span>${price}</span>
+          <span>${product.price}</span>
           <span className="text-lg leading-none">+</span>
         </div>
       </button>
     );
+  };
+
+  const isWednesday = new Date().getDay() === 3; // 0=Domingo, 1=Lunes, ..., 3=Miércoles
+
+  const getVariantColor = (variant: string) => {
+    switch (variant) {
+      case "ORDEN":
+      case "C/CARNE":
+      case "KILO":
+      case "GRANDE":
+        return "from-orange-500 to-amber-500 hover:from-orange-400 hover:to-amber-400";
+      case "MEDIA":
+      case "NATURAL":
+      case "MEDIO":
+      case "CHICA":
+        return "from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400";
+      default:
+        return "from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400";
+    }
   };
 
   return (
@@ -105,16 +226,22 @@ const ProductGrid = ({ section, cart, onAddToCart, onUpdateCart }: Props) => {
                 {product.price2 ? (
                   // Productos con dos precios
                   <>
-                    {renderProductButton(product, {
-                      price: product.price,
-                      label: getPriceLabels(product.priceType).label1,
-                      colorClass: 'from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400'
-                    })}
-                    {renderProductButton(product, {
-                      price: product.price2,
-                      label: getPriceLabels(product.priceType).label2,
-                      colorClass: 'from-green-500 to-emerald-500 hover:from-green-400 hover:to-emerald-400'
-                    })}
+                    {renderProductButton(
+                      createVariantProduct(
+                        product,
+                        product.price,
+                        getPriceLabels(product.priceType).label1
+                      ),
+                      getVariantColor(getPriceLabels(product.priceType).label1)
+                    )}
+                    {renderProductButton(
+                      createVariantProduct(
+                        product,
+                        product.price2,
+                        getPriceLabels(product.priceType).label2
+                      ),
+                      getVariantColor(getPriceLabels(product.priceType).label2)
+                    )}
                   </>
                 ) : (
                   // Productos con un solo precio
@@ -125,6 +252,154 @@ const ProductGrid = ({ section, cart, onAddToCart, onUpdateCart }: Props) => {
           </div>
         ))}
       </div>
+
+      {/* Modal de extras solo para papas */}
+      {showExtrasModal && selectedProduct && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+          <div className="relative bg-black p-6 rounded-lg shadow-lg w-full max-w-md z-10">
+            {/* Botón de cerrar */}
+            <button
+              onClick={closeExtrasModal}
+              className="absolute top-2 right-2 text-2xl text-gray-400 hover:text-amber-400 font-bold focus:outline-none"
+              aria-label="Cerrar"
+              type="button"
+            >
+              ×
+            </button>
+            <h3 className="font-bold mb-4 text-lg text-amber-500">{selectedProduct.name}</h3>
+
+            {/* Papa Mixto: Selección de 2 carnes */}
+            {selectedProduct.selectType === "mixto" && (
+              <div className="mb-4">
+                <div className="font-semibold mb-2">Elige 2 tipos de carne:</div>
+                {carnes.map(carne => (
+                  <label key={carne} className="flex items-center mb-1 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={mixtoCarnes.includes(carne)}
+                      onChange={() => {
+                        if (mixtoCarnes.includes(carne)) {
+                          setMixtoCarnes(mixtoCarnes.filter(c => c !== carne));
+                        } else if (mixtoCarnes.length < 2) {
+                          setMixtoCarnes([...mixtoCarnes, carne]);
+                        }
+                      }}
+                      disabled={!mixtoCarnes.includes(carne) && mixtoCarnes.length >= 2}
+                      className="accent-amber-500 w-5 h-5"
+                    />
+                    <span className="ml-2">{carne}</span>
+                  </label>
+                ))}
+                {mixtoCarnes.length !== 2 && (
+                  <div className="text-xs text-red-500 mt-1">Selecciona exactamente 2 carnes.</div>
+                )}
+              </div>
+            )}
+
+            {/* Papa Especial: Selección de especialidad */}
+            {selectedProduct.selectType === "especial" && (
+              <div className="mb-4">
+                <div className="font-semibold mb-2">Elige una especialidad:</div>
+                <select
+                  value={especialidad}
+                  onChange={e => setEspecialidad(e.target.value)}
+                  className="w-full border bg-black border-amber-400 rounded px-2 py-1"
+                >
+                  <option value="">Selecciona una especialidad</option>
+                  {especialidades.map(esp => (
+                    <option key={esp} value={esp}>{esp}</option>
+                  ))}
+                </select>
+                {!especialidad && (
+                  <div className="text-xs text-red-500 mt-1">Selecciona una especialidad.</div>
+                )}
+              </div>
+            )}
+
+            <div className="mb-4">
+              <label className="flex items-center mb-2 cursor-pointer">
+                <input
+                  type="checkbox"
+                  checked={sinExtra}
+                  onChange={handleSinExtra}
+                  className="accent-amber-500 w-5 h-5"
+                />
+                <span className="ml-2 text-base">Sin extra</span>
+              </label>
+              {!sinExtra && selectedProduct.extras?.map(extra => (
+                <label key={extra.key} className="flex items-center mb-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={selectedExtras.includes(extra.key)}
+                    onChange={() => handleExtraChange(extra.key)}
+                    className="accent-amber-500 w-5 h-5"
+                  />
+                  <span className="ml-2 text-base">{extra.name} <span className="text-amber-600 font-semibold">+${extra.price}</span></span>
+                </label>
+              ))}
+            </div>
+            {(sinExtra || selectedExtras.length > 0) && (
+              <>
+                <div className="mb-4 flex items-center gap-4">
+                  <div className="flex items-center gap-2 md:gap-3">
+                    <button
+                      onClick={() => setCantidad(Math.max(1, cantidad - 1))}
+                      className="w-6 h-6 md:w-7 md:h-7 bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors duration-300 flex items-center justify-center text-sm"
+                      type="button"
+                    >
+                      -
+                    </button>
+                    <span className="w-6 md:w-8 text-center font-bold text-white">{cantidad}</span>
+                    <button
+                      onClick={() => setCantidad(cantidad + 1)}
+                      className="w-6 h-6 md:w-7 md:h-7 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors duration-300 flex items-center justify-center text-sm"
+                      type="button"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <span className="font-bold text-amber-600 text-lg">
+                    Total: $
+                    {(
+                      (selectedProduct.price +
+                        (sinExtra
+                          ? 0
+                          : selectedProduct.extras
+                              ?.filter(e => selectedExtras.includes(e.key))
+                              .reduce((acc, e) => acc + e.price, 0) || 0)
+                      ) * cantidad
+                    ).toFixed(2)}
+                  </span>
+                </div>
+                <div className="flex gap-2">
+                  <button
+                    onClick={addToCartWithExtras}
+                    className="flex-1 bg-gradient-to-r from-amber-500 to-orange-500 text-black px-4 py-2 rounded-lg font-bold transition-all duration-300 hover:scale-105"
+                    disabled={
+                      (selectedProduct.selectType === "mixto" && mixtoCarnes.length !== 2) ||
+                      (selectedProduct.selectType === "especial" && !especialidad)
+                    }
+                  >
+                    Añadir al carrito
+                  </button>
+                  <button
+                    onClick={closeExtrasModal}
+                    className="flex-1 bg-gray-200 text-gray-700 px-4 py-2 rounded-lg font-bold hover:bg-gray-300 transition-all duration-300"
+                  >
+                    Cancelar
+                  </button>
+                </div>
+              </>
+            )}
+            {(!sinExtra && selectedExtras.length === 0) && (
+              <div className="text-sm text-gray-500 mt-2 text-center">
+                Selecciona "Sin extra" o al menos un extra para continuar.
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

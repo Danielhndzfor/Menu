@@ -15,7 +15,11 @@ const CartItem = ({ item, onUpdateQty, onUpdateObservations }: Props) => {
     <div className="bg-gray-800/50 rounded-lg p-3 sm:p-4 border border-gray-700/50 space-y-3">
       <div className="flex justify-between items-start">
         <div className="flex-1 pr-3">
-          <span className="text-white font-medium text-sm sm:text-base block">{item.name}</span>
+          <span className="text-white font-medium text-sm sm:text-base block">
+            {item.promo
+              ? `${item.name} (${item.qty} para ${item.qty * 2})`
+              : item.name}
+          </span>
           {item.desc && (
             <p className="text-xs text-gray-400 mt-1 line-clamp-2">{item.desc}</p>
           )}
