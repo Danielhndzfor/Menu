@@ -51,35 +51,38 @@ const CheckoutSteps = ({
 
   if (currentStep === 1) {
     return (
-      <div className="p-4 sm:p-6">
+      <div className="p-4 sm:p-6 flex flex-col h-full">
         <h4 className="text-base sm:text-lg font-semibold text-amber-400 mb-4">Revisa tu pedido</h4>
         {cart.length === 0 ? (
           <p className="text-gray-400 text-center py-8 text-sm sm:text-base">Tu carrito está vacío</p>
         ) : (
-          <div className="space-y-3 mb-6 max-h-96 sm:max-h-[28rem] overflow-y-auto">
-            {cart.map((item) => (
-              <CartItem
-                key={item.id}
-                item={item}
-                onUpdateQty={updateCart}
-                onUpdateObservations={updateCartObservations}
-              />
-            ))}
-          </div>
+          <>
+            <div className="space-y-3 mb-4 flex-1 overflow-y-auto max-h-96 sm:max-h-[28rem]">
+              {cart.map((item) => (
+                <CartItem
+                  key={item.id}
+                  item={item}
+                  onUpdateQty={updateCart}
+                  onUpdateObservations={updateCartObservations}
+                />
+              ))}
+            </div>
+            <div className="border-t border-gray-700 pt-4">
+              <div className="flex justify-between text-lg sm:text-xl font-bold text-amber-400 mb-4">
+                <span>Total:</span>
+                <span>${total}</span>
+              </div>
+            </div>
+          </>
         )}
-        <div className="border-t border-gray-700 pt-4">
-          <div className="flex justify-between text-lg sm:text-xl font-bold text-amber-400 mb-4">
-            <span>Total:</span>
-            <span>${total}</span>
-          </div>
-          <button
-            onClick={() => onStepComplete(1)}
-            disabled={cart.length === 0}
-            className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-black py-2 sm:py-3 rounded-lg font-bold disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 text-sm sm:text-base"
-          >
-            Continuar
-          </button>
-        </div>
+        {/* Botón siempre visible abajo */}
+        <button
+          onClick={() => onStepComplete(1)}
+          disabled={cart.length === 0}
+          className="mt-4 w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-black py-2 sm:py-3 rounded-lg font-bold disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 text-sm sm:text-base"
+        >
+          Continuar
+        </button>
       </div>
     );
   }

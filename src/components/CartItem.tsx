@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { CartItem as CartItemType } from "../data/menuData";
 import { Textarea } from "./ui/textarea";
@@ -25,19 +24,19 @@ const CartItem = ({ item, onUpdateQty, onUpdateObservations }: Props) => {
           </p>
         </div>
         
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 justify-center mt-2">
           <button
             onClick={() => onUpdateQty(item.id, item.qty - 1)}
-            className="w-6 h-6 sm:w-8 sm:h-8 bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors duration-300 flex items-center justify-center text-sm sm:text-base"
+            className="w-7 h-7 sm:w-8 sm:h-8 bg-red-600 text-white rounded-full hover:bg-red-700 transition-colors duration-300 flex items-center justify-center text-base"
           >
             -
           </button>
-          <span className="text-white font-bold w-6 sm:w-8 text-center text-sm sm:text-base">
+          <span className="text-white font-bold w-7 sm:w-8 text-center text-base">
             {item.qty}
           </span>
           <button
             onClick={() => onUpdateQty(item.id, item.qty + 1)}
-            className="w-6 h-6 sm:w-8 sm:h-8 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors duration-300 flex items-center justify-center text-sm sm:text-base"
+            className="w-7 h-7 sm:w-8 sm:h-8 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors duration-300 flex items-center justify-center text-base"
           >
             +
           </button>

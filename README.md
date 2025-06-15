@@ -1,73 +1,71 @@
-# Welcome to your Lovable project
+# Menú Digital - Taquería Colimas Tacos & Papas
 
-## Project info
+## Información del proyecto
 
-**URL**: https://lovable.dev/projects/3eb44459-4275-4b1a-b544-ad63b687227c
+Este proyecto es el sistema digital para el menú y la gestión de pedidos de la taquería Colimas Tacos & Papas.
 
-## How can I edit this code?
+## ¿Cómo puedo editar este código?
 
-There are several ways of editing your application.
+Tienes varias opciones para trabajar con el proyecto:
 
-**Use Lovable**
+### Usar tu IDE favorito (localmente)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/3eb44459-4275-4b1a-b544-ad63b687227c) and start prompting.
+1. Clona el repositorio con la URL Git:
 
-Changes made via Lovable will be committed automatically to this repo.
+   ```sh
+   git clone <TU_URL_GIT>
+Entra en la carpeta del proyecto:
 
-**Use your preferred IDE**
+sh
+Copiar
+Editar
+cd <NOMBRE_DE_TU_PROYECTO>
+Instala las dependencias necesarias:
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+sh
+Copiar
+Editar
+npm install
+Inicia el servidor de desarrollo con recarga automática y vista previa instantánea:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+sh
+Copiar
+Editar
 npm run dev
-```
+Editar directamente en GitHub
+Navega al archivo que deseas modificar.
 
-**Edit a file directly in GitHub**
+Haz clic en el botón "Editar" (icono de lápiz) en la parte superior derecha.
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Realiza los cambios y guarda haciendo commit.
 
-**Use GitHub Codespaces**
+Tecnologías usadas
+Este proyecto utiliza:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Vite
 
-## What technologies are used for this project?
+TypeScript
 
-This project is built with:
+React
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Tailwind CSS
 
-## How can I deploy this project?
+¿Cómo desplegar el proyecto?
+Para desplegar el proyecto, simplemente construye la versión de producción y súbela al servidor o plataforma que prefieras:
 
-Simply open [Lovable](https://lovable.dev/projects/3eb44459-4275-4b1a-b544-ad63b687227c) and click on Share -> Publish.
+sh
+Copiar
+Editar
+npm run build
+Luego sigue el proceso estándar de despliegue para tu hosting.
 
-## Can I connect a custom domain to my Lovable project?
+Contacto
+Si tienes dudas o quieres reportar algún problema, contacta con el equipo de desarrollo de la taquería.
 
-Yes, you can!
+¡Gracias por usar el sistema de Menú Digital de Colimas Tacos & Papas!
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+go
+Copiar
+Editar
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+¿Quieres que te ayude también con un archivo `CONTRIBUTING.md` o instrucciones más específicas?
