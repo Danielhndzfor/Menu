@@ -26,7 +26,7 @@ const Header = ({ cart, onCartClick, onSidebarToggle }: Props) => {
             className="w-12 h-12 rounded-full border-2 border-amber-400"
           />
           <div>
-            <h1 className="text-2xl font-extralight tracking-widest text-amber-400">COLIMA'S</h1>
+            <h1 className="text-2xl font-extralight tracking-widest text-amber-400">COLIMAS</h1>
             <p className="text-xs text-gray-400 tracking-wider">TAQUERÍA & PAPAS</p>
           </div>
         </div>

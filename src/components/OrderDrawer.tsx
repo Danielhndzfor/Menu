@@ -2,6 +2,7 @@ import { useState } from "react";
 import { X } from "lucide-react";
 import { CartItem } from "../data/menuData";
 import CheckoutSteps from "./CheckoutSteps";
+import React from "react";
 
 type Props = {
   open: boolean;
@@ -58,9 +59,10 @@ const OrderDrawer = ({
 
         {/* Progress Steps */}
         <div className="px-4 sm:px-6 py-4 sm:py-6 border-b border-gray-800/50">
-          <div className="flex items-center justify-center space-x-4 sm:space-x-8">
-            {[1, 2, 3].map((step) => (
-              <div key={step} className="flex items-center">
+          {/* Círculos y líneas */}
+          <div className="flex items-center justify-center">
+            {[1, 2, 3].map((step, idx) => (
+              <React.Fragment key={step}>
                 <div className="flex flex-col items-center">
                   <div
                     className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-xs sm:text-sm font-medium transition-all duration-300 ${
@@ -71,21 +73,21 @@ const OrderDrawer = ({
                   >
                     {step}
                   </div>
-                  <span className={`text-xs mt-1 sm:mt-2 transition-colors duration-300 ${
-                    currentStep >= step ? "text-amber-400" : "text-gray-500"
-                  }`}>
-                    {step === 1 && "Revisar"}
-                    {step === 2 && "Datos"}
-                    {step === 3 && "Confirmar"}
-                  </span>
                 </div>
-                {step < 3 && (
-                  <div
-                    className={`w-8 sm:w-16 h-0.5 mx-2 sm:mx-4 transition-colors duration-300 ${
-                      currentStep > step ? "bg-gradient-to-r from-amber-500 to-orange-500" : "bg-gray-700"
-                    }`}
-                  />
+                {/* Línea solo entre círculos */}
+                {idx < 2 && (
+                  <div className="w-8 sm:w-16 h-1 bg-gray-700 mx-2 sm:mx-4 flex-shrink-0 flex items-center">
+                    <div className={`w-full h-1 rounded ${currentStep > step ? "bg-gradient-to-r from-amber-500 to-orange-500" : "bg-gray-700"}`}></div>
+                  </div>
                 )}
+              </React.Fragment>
+            ))}
+          </div>
+          {/* Etiquetas debajo, alineadas con los círculos */}
+          <div className="flex justify-center mt-2">
+            {["Revisar", "Datos", "Confirmar"].map((label, idx) => (
+              <div key={label} className={`w-8 sm:w-10 text-center mx-2 sm:mx-4 text-xs sm:text-sm font-medium ${currentStep >= idx + 1 ? "text-amber-400" : "text-gray-500"}`}>
+                {label}
               </div>
             ))}
           </div>
